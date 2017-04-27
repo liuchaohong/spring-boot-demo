@@ -1,5 +1,7 @@
 package com.baomidou.springboot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,8 @@ import com.baomidou.springboot.service.IUserService;
 @RequestMapping("/user")
 public class UserController {
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());  
+	
 	@Autowired
 	private IUserService userService;
 
@@ -28,6 +32,7 @@ public class UserController {
 	 */
 	@RequestMapping("/test")
 	public Page<User> test() {
+		logger.info("xxxxx");
 		User user = new User("testAr", 0, 1);
 		System.err.println("删除所有：" + user.delete(null));
 		user.insert();
